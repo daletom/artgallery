@@ -75,6 +75,7 @@ h2 {
     <div class="column column-50">
       <img :src="activeImage" alt="">
     </div>
+    <h2>Click a thumbnail to enlarge the image.
     <div class="column">
       <img v-for="image in images" :src="image" class="thumb" alt="" @click="setImage(image)">
     </div>
