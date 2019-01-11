@@ -1,0 +1,110 @@
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Art Gallery</title>
+<link href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple" rel="stylesheet" type="text/css">
+<style>
+* { box-sizing: border-box; }
+body, a { margin: 0; }
+
+body {
+	color: dark-gray;
+	font-family: Rancho, sans-serif;
+	text-align: center;
+}
+h1, h2 {
+	font-family: Rancho, cursive;
+	margin: 0.125em;
+}
+h1 {
+	font-size: 6em;
+	margin: 0.5em;
+	text-align: center;
+
+}
+h2 {
+	font-size: 1.7em;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 2em;
+}
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+#app {
+  padding: 5rem;
+}
+
+.thumb {
+  width: 200px;
+  height: 150px;
+}
+}
+</style>
+</head>
+
+<body>
+<div class="topnav">
+  <a href="https://thedales.me/">Home</a>
+  <a href="https://thedales.me/tom">Tom</a>
+  <a href="https://thedales.me/heather">Heather</a>
+  <a href="https://thedales.me/zeek">Zeek</a>
+</div>
+<h1>Art Gallery</h1>
+<h2>Story of this art...</h2>
+<main>
+  <div id="app">
+  <div class="row">
+    <div class="column column-50">
+      <img :src="activeImage" alt="">
+    </div>
+    <div class="column">
+      <img v-for="image in images" :src="image" class="thumb" alt="" @click="setImage(image)">
+    </div>
+  </div>
+</div>
+  </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+  const App = new Vue({
+  el: '#app',
+  
+  data: {
+    activeImage: '',
+    
+    images: [
+      'https://images.unsplash.com/photo-1495289972783-24a6970de403?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03f4b660ef47a638c4bb23bea38350dc&auto=format&fit=crop&w=500&q=60',
+      
+      'https://images.unsplash.com/photo-1477209560495-270790f2251a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42dc70ee5e560c7e090b959c6c52fbc0&auto=format&fit=crop&w=500&q=60',
+      
+      'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4e58a56fd7bd17453e3cf914aa365870&auto=format&fit=crop&w=500&q=60'
+    ]
+  },
+  
+  methods: {
+    setImage (src) {
+      this.activeImage = src;
+    }
+  },
+  
+  created () {
+    this.activeImage = this.images[0];
+  }
+});
+</script>
+
+
+</body></html>
